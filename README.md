@@ -110,8 +110,11 @@ project-api_spec/
 
 - **TypeScript client**: `npm run generate:client` (requires `npm run bundle` first). Output in `generated/typescript/`.
 - **Postman collection**: `npm run generate:postman`. Output in `generated/postman/`.
+- **Interactive API Documentation**: [https://project-apispec.vercel.app](https://project-apispec.vercel.app)
+- **Raw OpenAPI Specification**: [https://project-apispec.vercel.app/cocoaflow-api.yaml](public/cocoaflow-api.yaml)
+- **GitHub Repository**: [https://github.com/frckbrice/project-api_spec](https://github.com/frckbrice/project-api_spec)
+- **Issue Tracking**: [https://github.com/frckbrice/project-api_spec/issues](https://github.com/frckbrice/project-api_spec/issues)
 
-Both `generated/` and the root-level `postman/` folder are listed in `.gitignore`. Only the contents of `generated/` are produced by the scripts above; the root `postman/` directory is unused and can be removed if desired.
 
 ## License
 
