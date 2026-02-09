@@ -108,13 +108,13 @@ jobs:
         run: |
           echo "Building Docker image..."
           docker build -t cocoaflow-api-docs .
-          echo "✅ Docker image built successfully"
+          echo "Docker image built successfully"
 
       - name: Test Docker container
         run: |
           echo "Starting container..."
           docker run -d --name test-container -p 8080:8080 cocoaflow-api-docs
-          echo "✅ Container started successfully"
+          echo "Container started successfully"
 
           echo "Waiting for container to be ready..."
           sleep 10
@@ -130,13 +130,13 @@ jobs:
           for i in {1..10}; do
             echo "Attempt $i: Testing container endpoint..."
             if curl -f -s http://localhost:8080 > /dev/null; then
-              echo "✅ Container is responding successfully!"
+              echo "Container is responding successfully!"
               break
             else
               echo "Attempt $i failed, waiting 3 seconds..."
               sleep 3
               if [ $i -eq 10 ]; then
-                echo "❌ Container failed to respond after 10 attempts"
+                echo "Container failed to respond after 10 attempts"
                 echo "Container logs:"
                 docker logs test-container
                 echo "Container status:"
@@ -146,7 +146,7 @@ jobs:
             fi
           done
 
-          echo "✅ Container test completed successfully!"
+          echo "Container test completed successfully!"
 
       - name: Cleanup Docker resources
         if: always()
@@ -198,11 +198,11 @@ jobs:
       - name: Vercel deployment status
         if: always()
         run: |
-          echo "🔍 Checking Vercel deployment status..."
+          echo "Checking Vercel deployment status..."
           if [ "${{ job.status }}" = "success" ]; then
-            echo "✅ Vercel deployment completed"
+            echo "Vercel deployment completed"
           else
-            echo "⚠️ Vercel deployment had issues"
+            echo "Vercel deployment had issues"
             echo "This is not critical - GitHub Pages deployment will still work"
           fi
 

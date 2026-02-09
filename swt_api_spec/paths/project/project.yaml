@@ -1,7 +1,7 @@
 # List all projects
 get:
   tags:
-    - 🌿 Projects
+    - Projects
   summary: Get all projects
   description: Retrieve all projects with optional filtering
   operationId: getAllProjects
@@ -63,26 +63,39 @@ get:
         format: int32
   responses:
     "200":
-      description: List of projects
+      description: List of projects retrieved successfully
       content:
-        "*/*":
+        application/json:
           schema:
             type: array
             items:
               $ref: "../../components/schemas/project.yaml"
+    "400":
+      $ref: "../../components/responses/ValidationError.yaml"
+    "401":
+      $ref: "../../components/responses/UnauthorizedError.yaml"
+    "403":
+      $ref: "../../components/responses/ForbiddenError.yaml"
     "404":
       description: Projects not found
-    "401":
-      description: Unauthorized access
-    "403":
-      description: Forbidden access
-    "400":
-      description: Bad request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Not Found"
+              message:
+                type: string
+                example: "No projects found"
+    "500":
+      $ref: "../../components/responses/ServerError.yaml"
 
 # Create a new project
 post:
   tags:
-    - 🌿 Projects
+    - Projects
   summary: Create a new project
   description: To create the project form by a specific company administrator (ADG).
   operationId: createProject
@@ -101,24 +114,35 @@ post:
           description: "Comprehensive internal inspection for quality assurance"
           sector_activity: "engineering"
           country: "Cameroon"
-          city: ["Douala", "Buea"]
+          city: "Douala"
           status: "DRAFT"
           start_date: "2024-01-01T00:00:00.000Z"
           end_date: "2024-12-31T00:00:00.000Z"
   responses:
-    "200":
-      description: Project
+    "201":
+      description: Project created successfully
       content:
-        "*/*":
+        application/json:
           schema:
-            type: array
-            items:
-              $ref: "../../components/schemas/project.yaml"
+            $ref: "../../components/schemas/project.yaml"
+    "400":
+      $ref: "../../components/responses/ValidationError.yaml"
+    "401":
+      $ref: "../../components/responses/UnauthorizedError.yaml"
+    "403":
+      $ref: "../../components/responses/ForbiddenError.yaml"
     "404":
       description: Project not found
-    "401":
-      description: Unauthorized access
-    "403":
-      description: Forbidden access
-    "400":
-      description: Bad request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Not Found"
+              message:
+                type: string
+                example: "Project could not be created"
+    "500":
+      $ref: "../../components/responses/ServerError.yaml"

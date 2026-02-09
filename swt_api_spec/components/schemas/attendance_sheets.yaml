@@ -1,42 +1,35 @@
+# Attendance sheet for training or inspection
 type: object
 properties:
   id:
     type: string
     format: cuid
-    description: the id of the attendance sheet
-    example: 1jssbbjsbjsbjs221878dd817dd87sd
-  training_id:
+    readOnly: true
+    description: "Unique ID of the attendance sheet."
+  training_session_id:
     type: string
     format: cuid
-    description: To specify the id of the training to which the attendance sheet belongs
-    example: 1jssbbjsbjsbjs21878dd817dd87sd
-  logo:
+    description: "Training session this sheet belongs to."
+  participant_id:
     type: string
-    description: To specify the logo of the company
-    example: "https://senima.com/wp-content/uploads/2022/01/gold.png"
+    format: cuid
+    description: "User or farmer ID."
+  attended_at:
+    type: string
+    format: date-time
+    description: "When attendance was recorded."
+  signature_url:
+    type: string
     format: uri
-  date:
+    description: "URL to signed attendance if applicable."
+  notes:
+    type: string
+    description: "Optional notes."
+  created_at:
     type: string
     format: date-time
-    description: To specify the date of the attendance sheet
-    example: "2022-01-01T00:00:00.000Z"
-  training_title:
-    type: string
-    description: To specify the title of the training
-    example: "Training Title"
-  training_module:
-    type: string
-    format: array
-    description: To specify the modules of the training
-    example: ["Module 1", "Module 2"]
-
-  create_at:
+    readOnly: true
+  updated_at:
     type: string
     format: date-time
-    description: To specify the creation date of the attendance sheet
-    example: "2022-01-01T00:00:00.000Z"
-  update_at:
-    type: string
-    format: date-time
-    description: To specify the update date of the attendance sheet
-    example: "2022-01-01T00:00:00.000Z"
+    readOnly: true

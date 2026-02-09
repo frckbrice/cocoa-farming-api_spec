@@ -1,6 +1,6 @@
 get:
   tags:
-    - 🔐 Authentication
+    - Authentication
   summary: Get current user
   description: Get the currently authenticated user's information
   operationId: getCurrentUser
@@ -30,7 +30,6 @@ get:
               company_id: "clh1234567890abcdef"
               phone_number: "+2341234567890"
               is_active: true
-              last_login: "2024-01-15T10:30:00Z"
               created_at: "2024-01-15T10:30:00Z"
               updated_at: "2024-01-15T10:30:00Z"
     "401":

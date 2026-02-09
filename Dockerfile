@@ -19,9 +19,9 @@ RUN npm run docs:build && npm run bundle
 # Expose port
 EXPOSE 8080
 
-# Health check
+# Health check (Alpine image has wget, not curl)
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:8080 || exit 1
+    CMD wget -q -O- http://localhost:8080 >/dev/null || exit 1
 
 # Start documentation server using bundled specification
 CMD ["npx", "redocly", "preview-docs", "./dist/cocoaflow-api.yaml", "--port", "8080", "--host", "0.0.0.0"] 

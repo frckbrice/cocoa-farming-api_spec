@@ -4,62 +4,62 @@ info:
   title: CocoaFlow API
   summary: Comprehensive Cocoa Industry Management Platform
   description: |
-    # 🌱 CocoaFlow API
+    # CocoaFlow API
 
     **The Complete Solution for Cocoa Industry Digital Transformation**
 
     ---
 
-    ## 🎯 Overview
+    ## Overview
 
     CocoaFlow is a comprehensive API platform designed to revolutionize cocoa industry operations through digital transformation. Our API provides end-to-end solutions for farmer management, farm tracking, certification compliance, and supply chain optimization.
 
-    ### 🌟 Why CocoaFlow?
+    ### Why CocoaFlow?
 
-    - **🌍 Industry-Focused**: Built specifically for cocoa industry challenges
-    - **🔒 Enterprise-Grade**: Production-ready with enterprise security
-    - **📊 Data-Driven**: Comprehensive analytics and reporting
-    - **🌱 Sustainable**: Supports Rainforest Alliance certification
-    - **🚀 Scalable**: Designed for growth and expansion
+    - **Industry-Focused**: Built specifically for cocoa industry challenges
+    - **Enterprise-Grade**: Production-ready with enterprise security
+    - **Data-Driven**: Comprehensive analytics and reporting
+    - **Sustainable**: Supports Rainforest Alliance certification
+    - **Scalable**: Designed for growth and expansion
 
     ---
 
-    ## 🚀 Key Features
+    ## Key Features
 
-    ### 👨‍🌾 **Farmer Management**
+    ### Farmer Management
     Complete farmer profiles, contracts, and relationship tracking with digital onboarding and verification.
 
-    ### 🏡 **Farm Operations**
+    ### Farm Operations
     GPS coordinates, inspection data, and compliance monitoring with real-time tracking capabilities.
 
-    ### 🌿 **Certification Support**
+    ### Certification Support
     Rainforest Alliance compliance tracking and audit trails with automated compliance checks.
 
-    ### 📈 **Campaign Management**
+    ### Campaign Management
     Seasonal campaign management and data collection periods with performance analytics.
 
-    ### 🔄 **Supply Chain**
+    ### Supply Chain
     Market management, transactions, and inventory tracking with end-to-end traceability.
 
-    ### 🎓 **Training & Education**
+    ### Training & Education
     Session management and participant tracking with learning analytics and certification.
 
     ---
 
-    ## 🛠️ Getting Started
+    ## Getting Started
 
-    ### 1. **Authentication**
+    ### 1. Authentication
     The API uses JWT Bearer token authentication. Include your token in the Authorization header:
     ```
     Authorization: Bearer <your_token>
     ```
 
-    ### 2. **API Requirements**
+    ### 2. API Requirements
     - **Content-Type**: `application/json`
     - **Authentication**: JWT Bearer token required
     - **Rate Limiting**: Standard rate limiting applies to prevent abuse
 
-    ### 3. **API Documentation**
+    ### 3. API Documentation
     - Browse the interactive documentation
     - Test endpoints directly in the browser
     - View detailed request/response examples
@@ -67,7 +67,7 @@ info:
 
     ---
 
-    ## 🏗️ Architecture
+    ## Architecture
 
     ### API Design
     - **RESTful Principles**: Resource-based URLs, standard HTTP methods
@@ -91,26 +91,26 @@ info:
 
     ---
 
-    ## 🌐 Environment
+    ## Environment
 
     | Environment | URL | Status |
     |-------------|-----|--------|
-    | **Documentation** | [https://project-apispec.vercel.app](https://project-apispec.vercel.app) | ✅ Live |
-    | **Local Development** | `http://localhost:8080` | ✅ Available |
+    | **Documentation** | [https://project-apispec.vercel.app](https://project-apispec.vercel.app) | Live |
+    | **Local Development** | `http://localhost:8080` | Available |
 
     ---
 
-    ## 📚 SDKs & Libraries
+    ## SDKs & Libraries
 
     | SDK | Language | Status | Documentation |
     |-----|----------|--------|---------------|
-    | **JavaScript/TypeScript** | Node.js, Browser | 🚧 Design Phase | [View Design](https://github.com/frckbrice/project-api_spec/tree/main/sdks/javascript) |
-    | **Python** | Python 3.8+ | 🚧 Design Phase | [View Design](https://github.com/frckbrice/project-api_spec/tree/main/sdks/python) |
-    | **Postman Collection** | API Testing | ✅ Ready | [Download](https://github.com/frckbrice/project-api_spec/tree/main/postman) |
+    | **JavaScript/TypeScript** | Node.js, Browser | Design Phase | [View Design](https://github.com/frckbrice/project-api_spec/tree/main/sdks/javascript) |
+    | **Python** | Python 3.8+ | Design Phase | [View Design](https://github.com/frckbrice/project-api_spec/tree/main/sdks/python) |
+    | **Postman Collection** | API Testing | Ready | [Download](https://github.com/frckbrice/project-api_spec/tree/main/postman) |
 
     ---
 
-    ## 📖 Documentation & Resources
+    ## Documentation & Resources
 
     - **API Documentation**: [https://project-apispec.vercel.app](https://project-apispec.vercel.app)
     - **GitHub Repository**: [https://github.com/frckbrice/project-api_spec](https://github.com/frckbrice/project-api_spec)

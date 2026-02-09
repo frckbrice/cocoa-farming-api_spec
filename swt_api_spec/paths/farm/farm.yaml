@@ -1,6 +1,6 @@
 get:
   tags:
-    - 🏡 Farms
+    - Farms
   summary: Get all farms
   description: Returns a list of all farms with optional filtering
   operationId: getAllFarms
@@ -167,7 +167,7 @@ get:
 
 post:
   tags:
-    - 🏡 Farms
+    - Farms
   summary: Create a new farm
   description: Create a new farm with the provided details
   operationId: createFarm

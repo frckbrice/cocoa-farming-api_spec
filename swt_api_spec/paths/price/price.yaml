@@ -1,24 +1,3 @@
-post:
-  tags:
-    - Price
-  summary: Create price table for subscription
-  operationId: createPriceTable
-  description: To create price table for subscription. Only administrators can use this operation. If you want to create price table for subscription, use the **createPriceTable** operation.
-  requestBody:
-    required: true
-    content:
-      application/json:
-        schema:
-          $ref: "../../components/schemas/price_plan.yaml"
-  responses:
-    "201":
-      description: price table created
-    "401":
-      description: Unauthorized access
-    "403":
-      description: Forbidden access
-    "500":
-      description: internal server error
 #get all price specified
 get:
   tags:
@@ -34,7 +13,29 @@ get:
           schema:
             type: array
             items:
-              $ref: ../../components/schemas/price_plan.yaml
+              $ref: "../../components/schemas/price_plan.yaml"
+    "401":
+      description: Unauthorized access
+    "403":
+      description: Forbidden access
+    "500":
+      description: internal server error
+
+post:
+  tags:
+    - Price
+  summary: Create price table for subscription
+  operationId: createPriceTable
+  description: To create price table for subscription. Only administrators can use this operation. If you want to create price table for subscription, use the **createPriceTable** operation.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../components/schemas/price_plan.yaml"
+  responses:
+    "201":
+      description: price table created
     "401":
       description: Unauthorized access
     "403":

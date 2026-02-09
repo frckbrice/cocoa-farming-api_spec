@@ -1,3 +1,33 @@
+#get specific price
+get:
+  tags:
+    - Price
+  summary: Get price table for subscription
+  operationId: getPriceTable
+  description: To get price table for subscription. Only administrators can use this operation. If you want to get price table for subscription, use the **getPriceTable** operation.
+  parameters:
+    - in: path
+      name: id
+      description: price table id
+      required: true
+      schema:
+        type: string
+        example: "gold_price_table"
+      style: simple
+  responses:
+    "200":
+      description: price table
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/price_plan.yaml"
+    "401":
+      description: Unauthorized access
+    "403":
+      description: Forbidden access
+    "500":
+      description: internal server error
+
 # update price table for subscription
 patch:
   tags:
@@ -20,7 +50,7 @@ patch:
     content:
       application/json:
         schema:
-          $ref: ../../components/schemas/price_plan.yaml
+          $ref: "../../components/schemas/price_plan.yaml"
           properties:
             unit_amount:
               type: string
@@ -55,36 +85,6 @@ delete:
   responses:
     "200":
       description: price table deleted
-    "401":
-      description: Unauthorized access
-    "403":
-      description: Forbidden access
-    "500":
-      description: internal server error
-
-#get specific price
-get:
-  tags:
-    - Price
-  summary: Get price table for subscription
-  operationId: getPriceTable
-  description: To get price table for subscription. Only administrators can use this operation. If you want to get price table for subscription, use the **getPriceTable** operation.
-  parameters:
-    - in: path
-      name: id
-      description: price table id
-      required: true
-      schema:
-        type: string
-        example: "gold_price_table"
-      style: simple
-  responses:
-    "200":
-      description: price table
-      content:
-        application/json:
-          schema:
-            $ref: "../../components/schemas/price_plan.yaml"
     "401":
       description: Unauthorized access
     "403":

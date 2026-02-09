@@ -1,6 +1,6 @@
 post:
   tags:
-    - 🔐 Authentication
+    - Authentication
   summary: User Logout
   description: |
     Logout the current user and invalidate their tokens.

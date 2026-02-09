@@ -1,6 +1,6 @@
 post:
   tags:
-    - 🔐 Authentication
+    - Authentication
   summary: Refresh Access Token
   description: |
     Refresh an expired access token using a valid refresh token.

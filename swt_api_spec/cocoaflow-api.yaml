@@ -4,62 +4,62 @@ info:
   title: CocoaFlow API
   summary: "Comprehensive Cocoa Industry Management Platform"
   description: |
-    # 🌱 CocoaFlow API
+    # CocoaFlow API
 
     **The Complete Solution for Cocoa Industry Digital Transformation**
 
     ---
 
-    ## 🎯 Overview
+    ## Overview
 
     CocoaFlow is a comprehensive API platform designed to revolutionize cocoa industry operations through digital transformation. Our API provides end-to-end solutions for farmer management, farm tracking, certification compliance, and supply chain optimization.
 
-    ### 🌟 Why CocoaFlow?
+    ### Why CocoaFlow?
 
-    - **🌍 Industry-Focused**: Built specifically for cocoa industry challenges
-    - **🔒 Enterprise-Grade**: Production-ready with enterprise security
-    - **📊 Data-Driven**: Comprehensive analytics and reporting
-    - **🌱 Sustainable**: Supports Rainforest Alliance certification
-    - **🚀 Scalable**: Designed for growth and expansion
+    - **Industry-Focused**: Built specifically for cocoa industry challenges
+    - **Enterprise-Grade**: Production-ready with enterprise security
+    - **Data-Driven**: Comprehensive analytics and reporting
+    - **Sustainable**: Supports Rainforest Alliance certification
+    - **Scalable**: Designed for growth and expansion
 
     ---
 
-    ## 🚀 Key Features
+    ## Key Features
 
-    ### 👨‍🌾 **Farmer Management**
+    ### Farmer Management
     Complete farmer profiles, contracts, and relationship tracking with digital onboarding and verification.
 
-    ### 🏡 **Farm Operations**
+    ### Farm Operations
     GPS coordinates, inspection data, and compliance monitoring with real-time tracking capabilities.
 
-    ### 🌿 **Certification Support**
+    ### Certification Support
     Rainforest Alliance compliance tracking and audit trails with automated compliance checks.
 
-    ### 📈 **Campaign Management**
+    ### Campaign Management
     Seasonal campaign management and data collection periods with performance analytics.
 
-    ### 🔄 **Supply Chain**
+    ### Supply Chain
     Market management, transactions, and inventory tracking with end-to-end traceability.
 
-    ### 🎓 **Training & Education**
+    ### Training & Education
     Session management and participant tracking with learning analytics and certification.
 
     ---
 
-    ## 🛠️ Getting Started
+    ## Getting Started
 
-    ### 1. **Authentication**
+    ### 1. Authentication
     The API uses JWT Bearer token authentication. Include your token in the Authorization header:
     ```
     Authorization: Bearer <your_token>
     ```
 
-    ### 2. **API Requirements**
+    ### 2. API Requirements
     - **Content-Type**: `application/json`
     - **Authentication**: JWT Bearer token required
     - **Rate Limiting**: Standard rate limiting applies to prevent abuse
 
-    ### 3. **API Documentation**
+    ### 3. API Documentation
     - Browse the interactive documentation
     - Test endpoints directly in the browser
     - View detailed request/response examples
@@ -67,7 +67,7 @@ info:
 
     ---
 
-    ## 🏗️ Architecture
+    ## Architecture
 
     ### API Design
     - **RESTful Principles**: Resource-based URLs, standard HTTP methods
@@ -91,26 +91,25 @@ info:
 
     ---
 
-    ## 🌐 Environment
+    ## Environment
 
     | Environment | URL | Status |
     |-------------|-----|--------|
-    | **Documentation** | [https://project-apispec.vercel.app](https://project-apispec.vercel.app) | ✅ Live |
-    | **Local Development** | `http://localhost:8080` | ✅ Available |
+    | **Documentation** | [https://project-apispec.vercel.app](https://project-apispec.vercel.app) | Live |
+    | **Local Development** | `http://localhost:8080` | Available |
 
     ---
 
-    ## 📚 SDKs & Libraries
+    ## Generated Artifacts
 
-    | SDK | Language | Status | Documentation |
-    |-----|----------|--------|---------------|
-    | **JavaScript/TypeScript** | Node.js, Browser | 🚧 Design Phase | [View Design](https://github.com/frckbrice/project-api_spec/tree/main/sdks/javascript) |
-    | **Python** | Python 3.8+ | 🚧 Design Phase | [View Design](https://github.com/frckbrice/project-api_spec/tree/main/sdks/python) |
-    | **Postman Collection** | API Testing | ✅ Ready | [Download](https://github.com/frckbrice/project-api_spec/tree/main/postman) |
+    | Artifact | Description |
+    |----------|--------------|
+    | **TypeScript Client** | Generated from OpenAPI spec via OpenAPI Generator (`generated/typescript/`) |
+    | **Postman Collection** | Generated collection for API testing (`generated/postman/`) |
 
     ---
 
-    ## 📖 Documentation & Resources
+    ## Documentation & Resources
 
     - **API Documentation**: [https://project-apispec.vercel.app](https://project-apispec.vercel.app)
     - **GitHub Repository**: [https://github.com/frckbrice/project-api_spec](https://github.com/frckbrice/project-api_spec)
@@ -121,9 +120,9 @@ info:
     Built with OpenAPI 3.1.0 and Redocly.
 
   contact:
-    email: support@cocoaflow.com
-    url: "https://cocoaflow.com/contact"
-    name: "CocoaFlow Support Team"
+    email: bricefrkc@gmail.com
+    url: "https://maebrieporfolio.vercel.app/"
+    name: "Avom Brice"
   license:
     name: Apache 2.0
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
@@ -133,25 +132,25 @@ info:
     backgroundColor: "#FFFFFF"
 
 externalDocs:
-  description: "📚 GitHub Repository & Documentation"
+  description: "GitHub Repository and Documentation"
   url: "https://github.com/frckbrice/project-api_spec"
 
 tags:
-  - name: "🔐 Authentication"
+  - name: "Authentication"
     description: "Authentication and authorization endpoints"
-  - name: "🏡 Farms"
+  - name: "Farms"
     description: "Farm management operations"
-  - name: "📈 Campaigns"
+  - name: "Campaigns"
     description: "Campaign and stock management"
-  - name: "🏢 Companies"
+  - name: "Companies"
     description: "Company management and subscriptions"
-  - name: "💰 Transactions"
+  - name: "Transactions"
     description: "Transaction processing and management"
-  - name: "💰 Receipts"
+  - name: "Receipts"
     description: "Receipt generation and management"
-  - name: "🔍 Inspection"
+  - name: "Inspection"
     description: "Inspection data management"
-  - name: "🎓 Training"
+  - name: "Training"
     description: "Training sessions and management"
   - name: "User"
     description: "User account management"
@@ -167,49 +166,55 @@ tags:
     description: "Receipt operations"
   - name: "Inspection_data"
     description: "Detailed inspection records"
-  - name: "🌿 Projects"
+  - name: "Projects"
     description: "Project management and certification tracking"
-  - name: "🏪 Markets"
+  - name: "Markets"
     description: "Market session management and trading"
-  - name: "🌿 Audits"
+  - name: "Audits"
     description: "Project and market audit management"
+  - name: "Users"
+    description: "User account management"
+  - name: "Requirements"
+    description: "Requirements management"
+  - name: "Requirement"
+    description: "Single requirement operations"
+  - name: "Campaign Stock"
+    description: "Campaign stock management"
+  - name: "Collector Agent"
+    description: "Collector agent management"
 
 x-tagGroups:
-  - name: 🏢 Core Operations
+  - name: Core Operations
     tags:
-      - 🏢 Companies
-      - 👥 Users
-      - 👨‍🌾 Farmers
-      - 🏡 Farms
-      - 🌿 Projects
-      - 📈 Campaigns
-      - 🔍 Inspection
-      - 📊 Analytics
-      - 🔐 Authentication
-      - 🏪 Markets
-      - 💰 Transactions
-      - 🎓 Training
-  - name: 🌿 Certification & Compliance
+      - Companies
+      - Users
+      - Farms
+      - Projects
+      - Campaigns
+      - Inspection
+      - Authentication
+      - Markets
+      - Transactions
+      - Training
+  - name: Certification & Compliance
     tags:
-      - 🌿 Audits
-      - 📈 Campaigns
-      - 🔍 Inspection
-  - name: 💼 Business Operations
+      - Audits
+      - Campaigns
+      - Inspection
+  - name: Business Operations
     tags:
-      - 🏪 Markets
-      - 💰 Transactions
-      - 🎓 Training
-  - name: ⚙️ System Management
+      - Markets
+      - Transactions
+      - Training
+  - name: System Management
     tags:
-      - 🔐 Authentication
-      - 📊 Analytics
-      - ⚙️ Administration
+      - Authentication
 
 servers:
   - url: http://localhost:8080
-    description: 💻 Local Development Environment
+    description: Local Development Environment
   - url: https://project-apispec.vercel.app
-    description: 📚 Documentation & API Specification
+    description: Documentation and API Specification
 
 paths:
   "/auth/login": # authentication
@@ -228,6 +233,10 @@ paths:
     $ref: paths/companies/company.yaml
   "/companies/{id}":
     $ref: paths/companies/company_{id}.yaml
+  "/companies/{id}/users":
+    $ref: paths/companies/companies_{id}_users.yaml
+  "/companies/{id}/users/{user_id}/roles":
+    $ref: paths/companies/companies_{id}_users_{user_id}_roles.yaml
   "/campaign": # campaign
     $ref: paths/campaign.yaml
   "/price_plan": # price plan
@@ -262,14 +271,16 @@ paths:
     $ref: paths/market/market_{company_id}.yaml
   "/inspection_data": # inspection_data
     $ref: "paths/inspection_data/inspection_data.yaml"
-  "/inspection_data/{project_id}": # inspection_data
+  "/inspection_data/{project_id}": # inspection_data (get/put/delete by project_id)
     $ref: "paths/inspection_data/inspection_data_{id}.yaml"
+  "/inspection_data/by-project/{project_id}": # inspection_data list by project
+    $ref: "paths/inspection_data/inspection_data_{project_id}.yaml"
   "/subscriptions": # subcription
     $ref: "paths/subscription/subscription.yaml"
   "/subscriptions/{subscription_id}": # subscription
     $ref: "paths/subscription/subscription_{id}.yaml"
   "/subscriptions/{company_id}/company":
-    $ref: paths/subscription/subscription_{company_id }_company.yaml
+    $ref: paths/subscription/subscription_{company_id}_company.yaml
   "/trainings": # training
     $ref: paths/training/training.yaml
   "/trainings/{training_id}": # training
@@ -285,7 +296,7 @@ paths:
   "/requirements": #requirement
     $ref: paths/requirement/requirement.yaml
   "/requirement/{id}":
-    $ref: paths/requirement/requirement_{id} .yaml
+    $ref: paths/requirement/requirement_{id}.yaml
   "/requirement/price_plan/{plan_id}":
     $ref: paths/requirement/requirement_price_plan_{plan_id}.yaml
   "/collector_agents": # collector_agent
@@ -306,6 +317,24 @@ components:
       $ref: components/schemas/tokens.yaml
     Session:
       $ref: components/schemas/session.yaml
+    Admin:
+      $ref: components/schemas/admin.yaml
+    ApiErrorResponse:
+      $ref: components/schemas/api-error-response-schema.yaml
+    AttendanceSheets:
+      $ref: components/schemas/attendance_sheets.yaml
+    Error:
+      $ref: components/schemas/error.yaml
+    MarketAudit:
+      $ref: components/schemas/market_audit.yaml
+    Member:
+      $ref: components/schemas/member.yaml
+    Offer:
+      $ref: components/schemas/offer.yaml
+    ProjectAudit:
+      $ref: components/schemas/project_audit.yaml
+    Subscription:
+      $ref: components/schemas/subscription.yaml
   securitySchemes:
     BearerAuth:
       type: http
@@ -393,10 +422,10 @@ webhooks:
   userInfo:
     post:
       summary: New user webhook
-      description: "Information about a new subscription entring in the system."
-      operationId: susbscriptionInfo
+      description: "Information about a new subscription entering the system."
+      operationId: subscriptionInfo
       tags:
-        - susbscription
+        - Subscription
       requestBody:
         content:
           application/json:
@@ -405,5 +434,19 @@ webhooks:
       responses:
         "200":
           description: "Successfully retrieved information about a new subscription."
+        "400":
+          description: "Bad request or validation error"
+          content:
+            application/json:
+              schema:
+                $ref: components/schemas/api-error-response-schema.yaml
+              example:
+                statusCode: 400
+                message: "Invalid subscription payload"
+                error: "Validation Error"
+                code: "VALIDATION_ERROR"
+                details:
+                  - field: "company_id"
+                    message: "company_id is required"
       security:
         - BearerAuth: []

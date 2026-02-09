@@ -1,71 +1,110 @@
-# get all the receipt produced during a single market
 get:
   tags:
-    - 💰 Receipts
+    - Receipts
   summary: Get all receipts
-  description: To get all receipt produced during a single market.
+  description: Retrieve all receipts produced during a single market. Supports pagination.
   operationId: getMarketReceipts
+  security:
+    - BearerAuth: []
   parameters:
     - name: market_id
       in: query
-      description: get the receipt produced during a single market
+      description: Filter receipts by market ID
       schema:
-        format: cuid
         type: string
-      required: false
+        format: cuid
+        example: "clh1234567890abcdef"
     - name: page
       in: query
-      description: page number
-      required: false
+      description: Page number for pagination
       schema:
         type: integer
+        minimum: 1
+        default: 1
         example: 1
     - name: limit
       in: query
-      description: page size
-      required: false
+      description: Number of items per page
       schema:
         type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
         example: 20
   responses:
     "200":
-      description: receipt
+      description: List of receipts retrieved successfully
       content:
         application/json:
           schema:
             type: array
             items:
-              $ref: ../../components/schemas/receipt.yaml
+              $ref: "../../components/schemas/receipt.yaml"
+          example:
+            - id: "clh1234567890abcdef"
+              market_id: "clh1234567890abcdef"
+              farmer_id: "clh1234567890abcdef"
+              village: "Ibadan Village"
+              date: "2024-01-15T10:30:00Z"
+              net_weight_in_kg: 100
+              quantity_in_bags: 10
+              humidity_level_of_product: 7.5
+              product_name: "Cocoa"
+              receipt_number: "RCP-2024-001"
     "401":
-      description: Unauthorized access
+      $ref: "../../components/responses/UnauthorizedError.yaml"
     "403":
-      description: Forbidden access
+      $ref: "../../components/responses/ForbiddenError.yaml"
     "500":
-      description: internal server error
+      $ref: "../../components/responses/ServerError.yaml"
 
-# create a data for a receipt
 post:
   tags:
-    - 💰 Receipts
+    - Receipts
   summary: Create a receipt
-  description: The receipt data are created after a specific transaction between the farmer and the company during the buying process.
+  description: Create receipt data after a transaction between the farmer and the company during the buying process.
+  operationId: createReceipt
   security:
     - BearerAuth: []
   requestBody:
+    required: true
     content:
       application/json:
         schema:
-          $ref: ../../components/schemas/receipt.yaml
-
+          $ref: "../../components/schemas/receipt.yaml"
+        example:
+          market_id: "clh1234567890abcdef"
+          farmer_id: "clh1234567890abcdef"
+          village: "Ibadan Village"
+          date: "2024-01-15T10:30:00Z"
+          net_weight_in_kg: 100
+          quantity_in_bags: 10
+          humidity_level_of_product: 7.5
+          net_weight_for_sale: 95
+          product_name: "Cocoa"
   responses:
     "201":
-      description: the receipt created
+      description: Receipt created successfully
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/receipt.yaml"
+          example:
+            id: "clh1234567890abcdef"
+            market_id: "clh1234567890abcdef"
+            farmer_id: "clh1234567890abcdef"
+            village: "Ibadan Village"
+            date: "2024-01-15T10:30:00Z"
+            net_weight_in_kg: 100
+            quantity_in_bags: 10
+            humidity_level_of_product: 7.5
+            product_name: "Cocoa"
+            receipt_number: "RCP-2024-001"
     "400":
-      description: the receipt not created. Bad Input
+      $ref: "../../components/responses/ValidationError.yaml"
     "401":
-      description: Unauthorized access
+      $ref: "../../components/responses/UnauthorizedError.yaml"
     "403":
-      description: Forbidden access
+      $ref: "../../components/responses/ForbiddenError.yaml"
     "500":
-      description: internal server error
-  operationId: createReceipt
+      $ref: "../../components/responses/ServerError.yaml"

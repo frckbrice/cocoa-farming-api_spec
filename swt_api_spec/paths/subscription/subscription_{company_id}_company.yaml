@@ -1,0 +1,56 @@
+patch:
+  tags:
+    - Company
+  summary: Cancel company subscription
+  description: Cancel the subscription for a specific company.
+  operationId: cancelCompanySubscription
+  security:
+    - BearerAuth: []
+  parameters:
+    - name: company_id
+      in: path
+      description: Company ID
+      required: true
+      schema:
+        type: string
+        format: cuid
+        example: "clh1234567890abcdef"
+  responses:
+    "200":
+      description: Company subscription cancelled successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              message:
+                type: string
+                example: "Subscription cancelled successfully"
+          example:
+            success: true
+            message: "Subscription cancelled successfully"
+    "401":
+      $ref: "../../components/responses/UnauthorizedError.yaml"
+    "403":
+      $ref: "../../components/responses/ForbiddenError.yaml"
+    "404":
+      description: Company or subscription not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Not Found"
+              message:
+                type: string
+                example: "Company or subscription not found"
+              code:
+                type: string
+                example: "NOT_FOUND"
+    "500":
+      $ref: "../../components/responses/ServerError.yaml"

@@ -1,11 +1,36 @@
-description: "To specify user profile with admin permissions. This type of user is also referred to as an **administrator**."
-allOf:
-  - $ref: user.yaml
-  - type: object
-    properties:
-      userType:
-        type: string
-        enum:
-          - ADG
-          - MEMBER
-        default: ADG
+# Admin user or admin-only payload
+type: object
+properties:
+  id:
+    type: string
+    format: cuid
+    readOnly: true
+    description: "Unique ID of the admin record."
+  user_id:
+    type: string
+    format: cuid
+    description: "User ID linked to admin role."
+  company_id:
+    type: string
+    format: cuid
+    description: "Company the admin belongs to."
+  role:
+    type: string
+    enum: [ADG, PDG, ADMIN]
+    description: "Admin role."
+  permissions:
+    type: array
+    items:
+      type: string
+    description: "List of permission codes."
+    example: ["users:write", "audits:read", "companies:manage"]
+  created_at:
+    type: string
+    format: date-time
+    readOnly: true
+    description: "When the admin record was created."
+  updated_at:
+    type: string
+    format: date-time
+    readOnly: true
+    description: "When the admin record was last updated."

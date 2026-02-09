@@ -1,7 +1,7 @@
 # get subscription by ID
 get:
   tags:
-    - 🏢 Companies
+    - Companies
   summary: Get subscription by ID
   description: |
     Retrieve a specific subscription by its ID.
@@ -36,7 +36,7 @@ get:
 
 put:
   tags:
-    - 🏢 Companies
+    - Companies
   summary: Update a subscription
   description: Update an existing subscription
   operationId: updateSubscription
@@ -106,7 +106,7 @@ put:
 
 delete:
   tags:
-    - 🏢 Companies
+    - Companies
   summary: Delete a subscription
   description: Delete an existing subscription
   operationId: deleteSubscription

@@ -1,6 +1,6 @@
 get:
   tags:
-    - 🏡 Farms
+    - Farms
   summary: Get farm by ID
   description: |
     Returns a specific farm by its ID.
@@ -53,7 +53,7 @@ get:
 
 patch:
   tags:
-    - 🏡 Farms
+    - Farms
   summary: Update farm
   description: |
     Update an existing farm's details.
@@ -144,7 +144,7 @@ patch:
 
 delete:
   tags:
-    - 🏡 Farms
+    - Farms
   summary: Delete farm
   description: |
     Delete a farm from the system.

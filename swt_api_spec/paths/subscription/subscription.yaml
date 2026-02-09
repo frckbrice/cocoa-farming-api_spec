@@ -1,6 +1,6 @@
 get:
   tags:
-    - 🏢 Companies
+    - Companies
   summary: List all subscriptions
   description: |
     Retrieve a list of all subscriptions.
@@ -54,7 +54,7 @@ get:
 
 post:
   tags:
-    - 🏢 Companies
+    - Companies
   summary: Create a new subscription
   description: Create a new subscription record
   operationId: createSubscription
