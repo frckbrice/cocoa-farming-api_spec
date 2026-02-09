@@ -8,6 +8,10 @@
 [![Docker](https://img.shields.io/badge/Docker-Containerized-blue.svg)](https://www.docker.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Client%20Generated-blue.svg)](https://www.typescriptlang.org/)
 
+<p align="center">
+  <img src="public/api_spec_image_1.png" alt="CocoaFlow API Specification" width="100%">
+</p>
+
 Professional OpenAPI 3.1.0 specification for CocoaFlow, a cocoa industry management platform. The repository provides the API contract, interactive documentation, and generated artifacts (TypeScript client and Postman collection) with CI/CD and containerized deployment.
 
 ## Overview
