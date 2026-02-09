@@ -1,7 +1,7 @@
 # get inspection data by ID
 get:
   tags:
-    - 🔍 Inspection
+    - Inspection
   summary: Get inspection data by ID
   description: |
     Retrieve a specific inspection data by its ID.
@@ -37,7 +37,7 @@ get:
 # update inspection data
 put:
   tags:
-    - 🔍 Inspection
+    - Inspection
   summary: Update inspection data
   description: Update an existing inspection data record
   operationId: updateInspectionData
@@ -108,7 +108,7 @@ put:
 # delete inspection data
 delete:
   tags:
-    - 🔍 Inspection
+    - Inspection
   summary: Delete inspection data
   description: Delete an existing inspection data record
   operationId: deleteInspectionData

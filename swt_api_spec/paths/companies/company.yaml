@@ -31,45 +31,69 @@ get:
         example: "asc | desc"
   responses:
     "200":
-      description: Company list
+      description: List of companies retrieved successfully
       content:
         application/json:
           schema:
             type: array
             items:
-              $ref: ../../components/schemas/company.yaml
-    "500":
-      description: Internal server error
+              $ref: "../../components/schemas/company.yaml"
+          example:
+            - id: "clh1234567890abcdef"
+              name: "CocoaFlow Co."
+              created_at: "2024-01-15T10:30:00Z"
+    "401":
+      $ref: "../../components/responses/UnauthorizedError.yaml"
+    "403":
+      $ref: "../../components/responses/ForbiddenError.yaml"
     "404":
       description: Companies not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Not Found"
+              message:
+                type: string
+                example: "No companies found"
+    "500":
+      $ref: "../../components/responses/ServerError.yaml"
 
 post:
   tags:
     - Company
   summary: Create a new company
   operationId: createCompany
-  description: To create a  new company in the system after registration. This operation is done by the PDG of the company exclusively.
+  description: Create a new company in the system after registration. This operation is restricted to company administrators.
+  security:
+    - BearerAuth: []
   requestBody:
     required: true
     content:
       multipart/form-data:
         schema:
-          $ref: ../../components/schemas/company.yaml
+          $ref: "../../components/schemas/company.yaml"
 
   responses:
     "201":
-      description: Company created
+      description: Company created successfully
       content:
         application/json:
           schema:
             $ref: "../../components/schemas/api-response-success-schema.yaml"
+          example:
+            message: "Company created successfully"
+            data:
+              id: "clh1234567890abcdef"
+            status: 201
     "400":
-      description: "bad request"
+      $ref: "../../components/responses/ValidationError.yaml"
+    "401":
+      $ref: "../../components/responses/UnauthorizedError.yaml"
     "403":
-      description: "Authorization failed due to insufficient permissions."
-      content:
-        application/json:
-          schema:
-            $ref: "../../components/schemas/api-error-response-schema.yaml"
+      $ref: "../../components/responses/ForbiddenError.yaml"
     "500":
-      description: Internal server error
+      $ref: "../../components/responses/ServerError.yaml"

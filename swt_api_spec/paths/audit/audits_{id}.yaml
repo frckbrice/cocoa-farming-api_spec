@@ -3,7 +3,7 @@
 
 get:
   tags:
-    - 🌿 Audits
+    - Audits
   summary: Get audit by ID
   description: |
     Retrieve a specific audit by its ID.
@@ -38,7 +38,7 @@ get:
 
 put:
   tags:
-    - 🌿 Audits
+    - Audits
   summary: Update an audit
   description: Update an existing audit
   operationId: updateAudit
@@ -148,7 +148,7 @@ put:
 
 delete:
   tags:
-    - 🌿 Audits
+    - Audits
   summary: Delete an audit
   description: Delete an existing audit
   operationId: deleteAudit

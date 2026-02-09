@@ -1,6 +1,6 @@
 get:
   tags:
-    - 📈 Campaigns
+    - Campaigns
   summary: List all campaign stocks
   description: |
     Retrieve a list of all campaign stocks.
@@ -58,7 +58,7 @@ get:
 
 post:
   tags:
-    - 📈 Campaigns
+    - Campaigns
   summary: Create a new campaign stock
   description: Create a new stock entry for a campaign
   operationId: createCampaignStock

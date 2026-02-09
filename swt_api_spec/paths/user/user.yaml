@@ -6,6 +6,8 @@ get:
     Retrieve a list of all users in the system.
     This endpoint supports pagination and filtering.
   operationId: listUsers
+  security:
+    - BearerAuth: []
   parameters:
     - name: page
       in: query
@@ -55,6 +57,22 @@ get:
                   per_page:
                     type: integer
                     example: 20
+          example:
+            data:
+              - id: "clh1234567890abcdef"
+                email: "user@example.com"
+                first_name: "John"
+                last_name: "Doe"
+                role: "user"
+                company_id: "clh1234567890abcdef"
+                is_active: true
+                created_at: "2024-01-15T10:30:00Z"
+                updated_at: "2024-01-15T10:30:00Z"
+            meta:
+              total: 100
+              pages: 5
+              current_page: 1
+              per_page: 20
     "401":
       $ref: "../../components/responses/UnauthorizedError.yaml"
     "403":
@@ -68,12 +86,22 @@ post:
   summary: Create a new user
   description: Create a new user in the system
   operationId: createUser
+  security:
+    - BearerAuth: []
   requestBody:
     required: true
     content:
       application/json:
         schema:
           $ref: "../../components/schemas/user.yaml"
+        example:
+          email: "user@example.com"
+          first_name: "John"
+          last_name: "Doe"
+          role: "user"
+          company_id: "clh1234567890abcdef"
+          phone_number: "+2341234567890"
+          is_active: true
   responses:
     "201":
       description: User created successfully
@@ -81,6 +109,16 @@ post:
         application/json:
           schema:
             $ref: "../../components/schemas/user.yaml"
+          example:
+            id: "clh1234567890abcdef"
+            email: "user@example.com"
+            first_name: "John"
+            last_name: "Doe"
+            role: "user"
+            company_id: "clh1234567890abcdef"
+            is_active: true
+            created_at: "2024-01-15T10:30:00Z"
+            updated_at: "2024-01-15T10:30:00Z"
     "400":
       $ref: "../../components/responses/ValidationError.yaml"
     "401":

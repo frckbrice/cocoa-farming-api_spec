@@ -1,6 +1,6 @@
 post:
   tags:
-    - 🔐 Authentication
+    - Authentication
   summary: Login user
   description: Authenticate a user and get access tokens
   operationId: loginUser

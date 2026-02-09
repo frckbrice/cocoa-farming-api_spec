@@ -1,6 +1,6 @@
 get:
   tags:
-    - 🎓 Training
+    - Training
   summary: Get training session by ID
   description: |
     Retrieve a specific training session by its ID.
@@ -17,11 +17,37 @@ get:
         format: cuid
   responses:
     "200":
-      description: List of training sessions retrieved successfully
+      description: Training session with optional attendance sheets
       content:
         application/json:
           schema:
-            $ref: "../../components/schemas/training_session.yaml"
+            allOf:
+              - $ref: "../../components/schemas/training_session.yaml"
+              - type: object
+                properties:
+                  attendance_sheets:
+                    type: array
+                    items:
+                      $ref: "../../components/schemas/attendance_sheets.yaml"
+                    description: "Attendance records for this session (when requested)."
+          example:
+            id: "clhsession01"
+            training_id: "clhtraining01"
+            session_date: "2024-02-15"
+            location: "Douala Training Center"
+            trainer_id: "clhtrainer01"
+            max_participants: 30
+            status: "scheduled"
+            created_at: "2024-02-09T10:00:00Z"
+            updated_at: "2024-02-09T10:00:00Z"
+            attendance_sheets:
+              - id: "clhatt001"
+                training_session_id: "clhsession01"
+                participant_id: "clhuser01"
+                attended_at: "2024-02-15T09:00:00Z"
+                notes: "On time"
+                created_at: "2024-02-15T09:00:00Z"
+                updated_at: "2024-02-15T09:00:00Z"
     "400":
       $ref: "../../components/responses/ValidationError.yaml"
     "401":
@@ -35,7 +61,7 @@ get:
 
 put:
   tags:
-    - 🎓 Training
+    - Training
   summary: Update a training session
   description: Update an existing training session
   operationId: updateTrainingSession
@@ -105,7 +131,7 @@ put:
 
 delete:
   tags:
-    - 🎓 Training
+    - Training
   summary: Delete a training session
   description: Delete an existing training session
   operationId: deleteTrainingSession

@@ -1,54 +1,92 @@
+# Assign role to a user of a company
 post:
   tags:
-    - Company
-  description: Assign role to a user of a company. This operation is not allowed only for ADG or PDG.
-  summary: Assign role to a user of a company
+    - Companies
+  summary: Assign role to company user
+  description: |
+    Assign or update the role of a user within a company.
+    Only ADG or PDG can use this operation.
   operationId: assignRoleToUser
+  security:
+    - BearerAuth: []
   parameters:
     - in: path
       name: id
-      description: company id
+      description: Company ID
       required: true
       schema:
-        # type: array
-        # items:
         type: string
-        example: AQA9CNo0cXNLt6sZp5Uc5P0
-        style: simple
-
+        format: cuid
+        example: "clh1234567890abcdef"
+      style: simple
     - in: path
       name: user_id
-      description: user id
+      description: User ID to assign role to
       required: true
       schema:
         type: string
-        example: AQA9CNo0cXNLt6sZp5Uc5P0
-        style: simple
-
-    - in: body
-      name: role
-      description: role
-      required: true
-      schema:
-        type: string
-        example: admin
-        style: simple
-  security:
-    - BearerAuth: []
+        format: cuid
+        example: "clh9876543210fedcba"
+      style: simple
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - role
+          properties:
+            role:
+              type: string
+              enum:
+                [
+                  ADG,
+                  PDG,
+                  MEMBER,
+                  FARMER,
+                  EMPLOYEE,
+                  AUDITOR,
+                  TRAINER,
+                  AGENT,
+                  IT_SUPPORT,
+                  SALES,
+                ]
+              description: "Role to assign to the user."
+        example:
+          role: "AUDITOR"
   responses:
     "200":
-      description: Company
+      description: Role assigned successfully
       content:
-        "*/*":
+        application/json:
           schema:
-            type: array
-            items:
-              $ref: "../../components/schemas/Company.yaml"
-    "404":
-      description: Company not found
-    "401":
-      description: Unauthorized access
-    "403":
-      description: Forbidden access
+            $ref: "../../components/schemas/member.yaml"
+          example:
+            id: "clhmember123"
+            user_id: "clh9876543210fedcba"
+            company_id: "clh1234567890abcdef"
+            role: "AUDITOR"
+            status: "active"
+            joined_at: "2024-01-15T10:30:00Z"
+            created_at: "2024-01-15T10:30:00Z"
+            updated_at: "2024-02-09T14:00:00Z"
     "400":
-      description: Bad request
+      $ref: "../../components/responses/ValidationError.yaml"
+    "401":
+      $ref: "../../components/responses/UnauthorizedError.yaml"
+    "403":
+      $ref: "../../components/responses/ForbiddenError.yaml"
+    "404":
+      description: Company or user not found
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/error.yaml"
+          example:
+            error: "Not Found"
+            message: "Company or user with the specified ID was not found."
+            code: "NOT_FOUND"
+            statusCode: 404
+    "500":
+      $ref: "../../components/responses/ServerError.yaml"

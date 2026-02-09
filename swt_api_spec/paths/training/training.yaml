@@ -1,7 +1,7 @@
 # get all training data
 get:
   tags:
-    - 🎓 Training
+    - Training
   summary: List all trainings
   description: |
     Retrieve a list of all trainings.
@@ -56,7 +56,7 @@ get:
 # create a training data
 post:
   tags:
-    - 🎓 Training
+    - Training
   summary: Create a new training
   description: Create a new training record
   operationId: createTraining

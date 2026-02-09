@@ -1,7 +1,117 @@
+#read all campaigns
+get:
+  tags:
+    - Campaigns
+  summary: List all campaigns
+  description: |
+    Retrieve a paginated list of campaigns with optional filtering capabilities.
+
+    **Required Permissions:** `read:campaigns`
+
+    **Filtering Options:**
+    - Filter by company ID
+    - Filter by status (active, inactive, completed)
+    - Filter by date range
+    - Filter by campaign name
+
+    **Pagination:**
+    - Default limit: 20 items per page
+    - Maximum limit: 100 items per page
+  operationId: getAllCampaigns
+  security:
+    - BearerAuth: []
+  parameters:
+    - $ref: "../components/parameters/PaginationLimit.yaml"
+    - $ref: "../components/parameters/PaginationOffset.yaml"
+    - $ref: "../components/parameters/CompanyId.yaml"
+    - $ref: "../components/parameters/DateRangeStart.yaml"
+    - $ref: "../components/parameters/DateRangeEnd.yaml"
+    - name: status
+      in: query
+      description: Filter by campaign status
+      required: false
+      schema:
+        type: string
+        enum: [active, inactive, completed]
+        example: "active"
+    - name: name
+      in: query
+      description: Filter by campaign name (partial match)
+      required: false
+      schema:
+        type: string
+        example: "2024-2025"
+  responses:
+    "200":
+      description: Campaign list retrieved successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: "../components/schemas/campaign.yaml"
+              pagination:
+                type: object
+                properties:
+                  limit:
+                    type: integer
+                    example: 20
+                  offset:
+                    type: integer
+                    example: 0
+                  total:
+                    type: integer
+                    example: 5
+                  page_count:
+                    type: integer
+                    example: 1
+                  has_next:
+                    type: boolean
+                    example: false
+                  has_prev:
+                    type: boolean
+                    example: false
+          example:
+            data:
+              - id: "clh1234567890abcdef"
+                name: "Spring 2024 Harvest"
+                description: "Main cocoa harvest campaign for Spring 2024"
+                start_date: "2024-09-01"
+                end_date: "2025-03-31"
+                status: "OPEN"
+                created_at: "2024-01-15T10:30:00Z"
+                updated_at: "2024-01-15T10:30:00Z"
+              - id: "clh1234567890abcdeg"
+                name: "Fall 2023 Harvest"
+                description: "Main cocoa harvest campaign for Fall 2023"
+                start_date: "2023-09-01"
+                end_date: "2024-03-31"
+                status: "CLOSED"
+                created_at: "2023-08-15T10:30:00Z"
+                updated_at: "2024-03-31T23:59:59Z"
+            pagination:
+              limit: 20
+              offset: 0
+              total: 2
+              page_count: 1
+              has_next: false
+              has_prev: false
+    "400":
+      $ref: "../components/responses/ValidationError.yaml"
+    "401":
+      $ref: "../components/responses/UnauthorizedError.yaml"
+    "403":
+      $ref: "../components/responses/ForbiddenError.yaml"
+    "500":
+      $ref: "../components/responses/ServerError.yaml"
+
 #create a campaign from all operations of the company will be performed
 post:
   tags:
-    - 📈 Campaigns
+    - Campaigns
   summary: Create a new campaign
   description: |
     Create a new campaign from which all the operations like projects will be performed.
@@ -113,120 +223,10 @@ post:
     "500":
       $ref: "../components/responses/ServerError.yaml"
 
-#read all campaigns
-get:
-  tags:
-    - 📈 Campaigns
-  summary: List all campaigns
-  description: |
-    Retrieve a paginated list of campaigns with optional filtering capabilities.
-
-    **Required Permissions:** `read:campaigns`
-
-    **Filtering Options:**
-    - Filter by company ID
-    - Filter by status (active, inactive, completed)
-    - Filter by date range
-    - Filter by campaign name
-
-    **Pagination:**
-    - Default limit: 20 items per page
-    - Maximum limit: 100 items per page
-  operationId: getAllCampaigns
-  security:
-    - BearerAuth: []
-  parameters:
-    - $ref: "../components/parameters/PaginationLimit.yaml"
-    - $ref: "../components/parameters/PaginationOffset.yaml"
-    - $ref: "../components/parameters/CompanyId.yaml"
-    - $ref: "../components/parameters/DateRangeStart.yaml"
-    - $ref: "../components/parameters/DateRangeEnd.yaml"
-    - name: status
-      in: query
-      description: Filter by campaign status
-      required: false
-      schema:
-        type: string
-        enum: [active, inactive, completed]
-        example: "active"
-    - name: name
-      in: query
-      description: Filter by campaign name (partial match)
-      required: false
-      schema:
-        type: string
-        example: "2024-2025"
-  responses:
-    "200":
-      description: Campaign list retrieved successfully
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              data:
-                type: array
-                items:
-                  $ref: "../components/schemas/campaign.yaml"
-              pagination:
-                type: object
-                properties:
-                  limit:
-                    type: integer
-                    example: 20
-                  offset:
-                    type: integer
-                    example: 0
-                  total:
-                    type: integer
-                    example: 5
-                  page_count:
-                    type: integer
-                    example: 1
-                  has_next:
-                    type: boolean
-                    example: false
-                  has_prev:
-                    type: boolean
-                    example: false
-          example:
-            data:
-              - id: "clh1234567890abcdef"
-                name: "Spring 2024 Harvest"
-                description: "Main cocoa harvest campaign for Spring 2024"
-                start_date: "2024-09-01"
-                end_date: "2025-03-31"
-                status: "OPEN"
-                created_at: "2024-01-15T10:30:00Z"
-                updated_at: "2024-01-15T10:30:00Z"
-              - id: "clh1234567890abcdeg"
-                name: "Fall 2023 Harvest"
-                description: "Main cocoa harvest campaign for Fall 2023"
-                start_date: "2023-09-01"
-                end_date: "2024-03-31"
-                status: "CLOSED"
-                created_at: "2023-08-15T10:30:00Z"
-                updated_at: "2024-03-31T23:59:59Z"
-            pagination:
-              limit: 20
-              offset: 0
-              total: 2
-              page_count: 1
-              has_next: false
-              has_prev: false
-    "400":
-      $ref: "../components/responses/ValidationError.yaml"
-    "401":
-      $ref: "../components/responses/UnauthorizedError.yaml"
-    "403":
-      $ref: "../components/responses/ForbiddenError.yaml"
-    "500":
-      $ref: "../components/responses/ServerError.yaml"
-
 #update a campaign
 put:
   tags:
-    - 📈 Campaigns
+    - Campaigns
   summary: Update a campaign
   description: |
     Update an existing campaign's information.
@@ -338,7 +338,7 @@ put:
 #delete a campaign
 delete:
   tags:
-    - 📈 Campaigns
+    - Campaigns
   summary: Delete a campaign
   description: |
     Delete a campaign from the system.

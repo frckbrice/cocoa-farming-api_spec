@@ -1,9 +1,5 @@
 # CocoaFlow API Specification
 
-<img src="https://images.unsplash.com/photo-1667900598245-6620cea1c04c?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y29jb2F8ZW58MHx8MHx8fDA%3D" alt="CocoaFlow - Cocoa Industry Management" width="100%" style="max-height: 300px; object-fit: cover;">
-
-![display image](public/api_spec_image_1.png)
-
 [![OpenAPI 3.1.0](https://img.shields.io/badge/OpenAPI-3.1.0-green.svg)](https://spec.openapis.org/oas/v3.1.0)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Node.js](https://img.shields.io/badge/Node.js-22+-green.svg)](https://nodejs.org/)
@@ -12,267 +8,121 @@
 [![Docker](https://img.shields.io/badge/Docker-Containerized-blue.svg)](https://www.docker.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Client%20Generated-blue.svg)](https://www.typescriptlang.org/)
 
-> **Professional OpenAPI 3.1.0 specification** for CocoaFlow - A comprehensive cocoa industry management platform with full CI/CD pipeline, automated testing, and production-ready documentation.
+Professional OpenAPI 3.1.0 specification for CocoaFlow, a cocoa industry management platform. The repository provides the API contract, interactive documentation, and generated artifacts (TypeScript client and Postman collection) with CI/CD and containerized deployment.
 
-## 🏆 Project Highlights
+## Overview
 
-### 📊 **Technical Metrics**
+CocoaFlow API defines a production-ready contract for cocoa industry operations: farmer and farm management, GPS and inspection data, Rainforest Alliance certification, campaigns, markets, transactions, training, and subscriptions. The spec is the single source of truth for frontend and backend integration.
 
-- **50+ API Endpoints** covering complete cocoa supply chain
-- **15+ Data Models** with comprehensive validation
-- **100% OpenAPI 3.1.0 Compliance** with modern features
-- **Automated CI/CD Pipeline** with Docker containerization
-- **Multi-environment Deployment** (Vercel + GitHub Pages)
-- **Generated TypeScript Client** with full type safety
-- **Comprehensive Error Handling** with standardized responses
+### Technical Highlights
 
-### 🎯 **Business Impact**
+- **OpenAPI 3.1.0** with modular paths and reusable components
+- **50+ endpoints** across auth, users, companies, farms, projects, campaigns, markets, transactions, training, inspections, audits, and subscriptions
+- **Standardized request/response examples** and error schemas (4xx/5xx)
+- **JWT Bearer and API key** security; rate limiting and validation
+- **Generated TypeScript client** (OpenAPI Generator) and **Postman collection** for testing
+- **CI/CD** (GitHub Actions), **Docker** image for docs, and deployment to GitHub Pages / Vercel
 
-- **End-to-End Supply Chain Management** from farm to factory
-- **Rainforest Alliance Certification** compliance tracking
-- **Real-time GPS Farm Monitoring** with inspection data
-- **Automated Training Management** for farmer education
-- **Advanced Analytics & Reporting** for business intelligence
-
-## 🌟 Overview
-
-CocoaFlow is a **production-ready API specification** designed for managing comprehensive cocoa industry operations. This specification serves as the **contract between frontend and backend teams**, ensuring consistent development, integration, and deployment across the entire cocoa supply chain.
-
-### 🏗️ **Architecture Excellence**
-
-- **Modern OpenAPI 3.1.0** specification with advanced features
-- **JWT Bearer Token** authentication with OAuth 2.0 support
-- **RESTful API** design with consistent patterns and best practices
-- **Comprehensive error handling** with standardized HTTP responses
-- **Rate limiting** and security best practices implementation
-- **Docker containerization** for consistent deployment
-- **Automated testing** with GitHub Actions CI/CD pipeline
-
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
 - Node.js 22+
 - npm 8+
-- Docker (optional, for containerized deployment)
+- Docker (optional)
 
 ### Installation
 
 ```bash
-# Clone the repository
 git clone git@github.com:frckbrice/project-api_spec.git
 cd project-api_spec
-
-# Install dependencies
 npm install
-
-# Start development server
 npm run docs:serve
 ```
 
-### Available Scripts
+Documentation is served at `http://localhost:8080`.
+
+### Scripts
+
+| Command                    | Description                                           |
+| -------------------------- | ----------------------------------------------------- |
+| `npm run docs:serve`       | Serve interactive docs (port 8080)                    |
+| `npm run docs:build`       | Build static documentation                            |
+| `npm run bundle`           | Bundle spec to `dist/cocoaflow-api.yaml`              |
+| `npm run lint`             | Lint OpenAPI spec                                     |
+| `npm run validate`         | Validate against OpenAPI 3.1.0                        |
+| `npm run test`             | Lint, validate, format check                          |
+| `npm run generate:client`  | Generate TypeScript client to `generated/typescript/` |
+| `npm run generate:postman` | Generate Postman collection to `generated/postman/`   |
+
+### Docker
 
 ```bash
-# Development & Documentation
-npm run docs:serve       # Serve interactive documentation on port 8080
-npm run docs:build       # Build static documentation for production
-npm run preview          # Preview built documentation
-
-# Quality Assurance & Testing
-npm run lint            # Lint OpenAPI specification for best practices
-npm run validate        # Validate specification against OpenAPI 3.1.0
-npm run test            # Run comprehensive test suite
-
-# Build & Generate
-npm run bundle          # Bundle specification into single distributable file
-npm run generate:client # Generate production-ready TypeScript client
-npm run generate:postman # Generate Postman collection for testing
-
-# Docker Operations
-docker build -t cocoaflow-api-docs .  # Build containerized documentation
-docker run -p 8080:8080 cocoaflow-api-docs  # Run containerized docs
+docker build -t cocoaflow-api-docs .
+docker run -p 8080:8080 cocoaflow-api-docs
 ```
 
-## 📚 Documentation & Deployment
+## Documentation and Deployment
 
-### 🌐 **Live Documentation**
+| Environment  | URL                                                                                   | Notes                      |
+| ------------ | ------------------------------------------------------------------------------------- | -------------------------- |
+| GitHub Pages | [project-api_spec](https://frckbrice.github.io/project-api_spec)                      | Published docs             |
+| Raw spec     | [cocoaflow-api.yaml](https://frckbrice.github.io/project-api_spec/cocoaflow-api.yaml) | Bundled OpenAPI YAML       |
+| Local        | `http://localhost:8080`                                                               | After `npm run docs:serve` |
 
-| Environment                   | URL                                                                                          | Status       | Features                |
-| ----------------------------- | -------------------------------------------------------------------------------------------- | ------------ | ----------------------- |
-| **Production (Vercel)**       | [https://project-apispec.vercel.app](https://project-apispec.vercel.app)                     | ✅ Live      | Auto-deployment, CDN    |
-| **Production (GitHub Pages)** | [https://frckbrice.github.io/project-api_spec](https://frckbrice.github.io/project-api_spec) | ✅ Live      | Version-controlled docs |
-| **Local Development**         | `http://localhost:8080`                                                                      | ✅ Available | Hot reload, real-time   |
-| **Docker Container**          | `docker run -p 8080:8080 cocoaflow-api-docs`                                                 | ✅ Available | Isolated, reproducible  |
-
-### 📁 **Project Architecture**
+## Project Structure
 
 ```
 project-api_spec/
-├── swt_api_spec/                    # Core OpenAPI specification
-│   ├── components/                  # Reusable components
-│   │   ├── schemas/                # Data models and validation schemas
-│   │   ├── responses/              # Standardized response definitions
-│   │   └── parameters/             # Common parameter definitions
-│   ├── paths/                      # API endpoint definitions
-│   │   ├── auth/                   # Authentication endpoints
-│   │   ├── farm/                   # Farm management endpoints
-│   │   ├── user/                   # User management endpoints
-│   │   ├── company/                # Company management endpoints
-│   │   ├── project/                # Project management endpoints
-│   │   └── ...                     # Other domain endpoints
-│   └── cocoaflow-api.yaml          # Main OpenAPI specification
-├── docs/                           # Generated documentation
-├── dist/                           # Bundled specifications
-├── generated/                      # Auto-generated clients
-│   ├── typescript/                 # TypeScript client with types
-│   └── postman/                    # Postman collection
-├── .github/workflows/              # CI/CD pipeline configuration
-├── Dockerfile                      # Container configuration
-├── redocly.yaml                    # Documentation configuration
-└── package.json                    # Project dependencies and scripts
+├── swt_api_spec/                 # OpenAPI source
+│   ├── components/
+│   │   ├── schemas/              # Data models
+│   │   ├── responses/            # Reusable response definitions
+│   │   └── parameters/           # Shared parameters
+│   ├── paths/                    # Endpoints by domain (auth, user, companies, farm, project, etc.)
+│   └── cocoaflow-api.yaml       # Root spec
+├── dist/                         # Bundled spec (output of bundle)
+├── generated/                    # Generated artifacts (gitignored; run generate scripts to create)
+│   ├── typescript/               # Generated TypeScript client (npm run generate:client)
+│   └── postman/                  # Generated Postman collection (npm run generate:postman)
+├── postman/                      # Legacy/unused; Postman output lives in generated/postman/
+├── public/                       # Built documentation assets
+├── .github/workflows/            # CI/CD
+├── redocly.yaml                  # Redocly and lint config
+├── Dockerfile                    # Docs server image
+└── package.json
 ```
 
-## 🔧 Development Workflow
+## Adding or Changing Endpoints
 
-### **Adding New Endpoints**
+1. Add or edit YAML under `swt_api_spec/paths/` (and `components/schemas/` if needed).
+2. Reference new paths in `swt_api_spec/cocoaflow-api.yaml` under `paths:`.
+3. Include request body examples for POST/PUT/PATCH and response examples for success and errors.
+4. Run `npm run lint && npm run validate`, then `npm run docs:serve` to verify.
 
-1. **Create endpoint file** in appropriate directory under `paths/`
-2. **Define schema** in `components/schemas/` if needed
-3. **Add path reference** to main `cocoaflow-api.yaml`
-4. **Run validation**: `npm run lint && npm run validate`
-5. **Update documentation** with comprehensive examples
-6. **Test locally**: `npm run docs:serve`
-7. **Commit and push** - CI/CD pipeline handles the rest
+## Security and Compliance
 
-### **Example: Adding Farm Inspection Endpoint**
+- **Auth**: JWT Bearer (primary), API key for service-to-service, OAuth2 optional.
+- **Practices**: HTTPS, rate limiting, input validation, CORS, security headers.
+- **Compliance**: Rainforest Alliance-related flows, audit considerations, data privacy.
 
-```yaml
-# paths/farm/farm_{id}_inspection.yaml
-get:
-  tags:
-    - 🌾 Farms
-  summary: Get farm inspection data
-  description: Retrieve comprehensive inspection data for a specific farm
-  operationId: getFarmInspection
-  security:
-    - BearerAuth: []
-  parameters:
-    - name: id
-      in: path
-      required: true
-      schema:
-        type: string
-        format: cuid
-        example: "clh1234567890abcdef"
-  responses:
-    "200":
-      description: Farm inspection data retrieved successfully
-      content:
-        application/json:
-          schema:
-            $ref: "../../components/schemas/inspection_data.yaml"
-          example:
-            success: true
-            data:
-              id: "clh1234567890abcdef"
-              farm_id: "clh1234567890abcdef"
-              inspection_date: "2024-01-15T10:30:00Z"
-              status: "PASSED"
-```
+## Generated Artifacts
 
-## 🔒 Security & Compliance
+- **TypeScript client**: `npm run generate:client` (requires `npm run bundle` first). Output in `generated/typescript/`.
+- **Postman collection**: `npm run generate:postman`. Output in `generated/postman/`.
 
-### **Authentication & Authorization**
+Both `generated/` and the root-level `postman/` folder are listed in `.gitignore`. Only the contents of `generated/` are produced by the scripts above; the root `postman/` directory is unused and can be removed if desired.
 
-1. **JWT Bearer Token** (Primary)
-   - 24-hour expiration with refresh token support
-   - Role-based access control (RBAC)
-   - Secure token storage and transmission
+## License
 
-2. **API Key Authentication** (Service-to-Service)
-   - Webhook authentication for integrations
-   - Rate limiting per API key
-   - Automated system integrations
+Apache License 2.0. See [LICENSE](LICENSE).
 
-### **Security Features**
+## Contact
 
-- **HTTPS enforcement** across all environments
-- **Rate limiting** with configurable thresholds
-- **Input validation** with comprehensive schemas
-- **SQL injection prevention** through parameterized queries
-- **XSS protection** with proper content encoding
-- **CORS configuration** for cross-origin requests
-- **Security headers** implementation
-
-### **Compliance Standards**
-
-- **Rainforest Alliance** certification tracking
-- **Agricultural best practices** compliance
-- **Data privacy** and GDPR considerations
-- **Audit trail** for all critical operations
-
-## 🚀 CI/CD Pipeline
-
-### **Automated Workflow**
-
-```mermaid
-graph LR
-    A[Code Push] --> B[Validate OpenAPI]
-    B --> C[Lint & Test]
-    C --> D[Build Documentation]
-    D --> E[Generate Clients]
-    E --> F[Test Docker Container]
-    F --> G[Deploy to Production]
-    G --> H[Security Scan]
-```
-
-### **Pipeline Features**
-
-- **Automated validation** of OpenAPI specification
-- **Docker container testing** with health checks
-- **Multi-environment deployment** (Vercel + GitHub Pages)
-- **Security vulnerability scanning** with Trivy
-- **Generated client testing** (TypeScript + Postman)
-- **Artifact management** for efficient builds
-
-## 👨‍💻 Developer Profile
-
-### **Technical Skills Demonstrated**
-
-- **API Design**: OpenAPI 3.1.0 specification with best practices
-- **DevOps**: CI/CD pipeline with GitHub Actions and Docker
-- **Documentation**: Professional documentation with Redocly
-- **Testing**: Automated testing and validation
-- **Security**: JWT authentication and security best practices
-- **Deployment**: Multi-environment deployment strategies
-
-### **Portfolio & Professional Links**
-
-- **Portfolio**: [https://maebrieporfolio.vercel.app/](https://maebrieporfolio.vercel.app/)
-- **GitHub**: [https://github.com/frckbrice](https://github.com/frckbrice)
-- **LinkedIn**: [https://linkedin.com/in/avombrice](https://linkedin.com/in/avombrice)
-- **Email**: [bricefrkc@gmail.com](mailto:bricefrkc@gmail.com)
-
-## 📞 Support & Resources
-
-### **Documentation & API**
-
-- **Interactive API Documentation**: [https://project-apispec.vercel.app](https://project-apispec.vercel.app)
-- **Raw OpenAPI Specification**: [https://project-apispec.vercel.app/cocoaflow-api.yaml](https://project-apispec.vercel.app/cocoaflow-api.yaml)
-- **GitHub Repository**: [https://github.com/frckbrice/project-api_spec](https://github.com/frckbrice/project-api_spec)
-- **Issue Tracking**: [https://github.com/frckbrice/project-api_spec/issues](https://github.com/frckbrice/project-api_spec/issues)
-
-### **Development Resources**
-
-- **TypeScript Client**: Available in `generated/typescript/`
-- **Postman Collection**: Available in `generated/postman/`
-- **Docker Image**: `cocoaflow-api-docs` for containerized deployment
-- **CI/CD Pipeline**: Configured in `.github/workflows/ci.yml`
-
-## 📄 License
-
-This project is licensed under the **Apache License 2.0** - see the [LICENSE](LICENSE) file for details.
+- [Portfolio](https://maebrieporfolio.vercel.app/)
+- [GitHub](https://github.com/frckbrice)
+- [LinkedIn](https://linkedin.com/in/avombrice)
 
 ---
 
-**Built with modern technologies: OpenAPI 3.1.0, Redocly, Docker, GitHub Actions, and TypeScript**
+OpenAPI 3.1.0, Redocly, Docker, GitHub Actions, TypeScript.

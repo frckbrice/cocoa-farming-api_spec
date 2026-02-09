@@ -1,11 +1,29 @@
+# Standard API error response body
 type: object
 properties:
   statusCode:
-    type: number
+    type: integer
+    description: "HTTP-style status code."
     example: 400
   message:
     type: string
+    description: "Human-readable error message."
     example: "Bad Request"
   error:
     type: string
+    description: "Error type or code."
     example: "Validation Error"
+  code:
+    type: string
+    description: "Application error code."
+    example: "VALIDATION_ERROR"
+  details:
+    type: array
+    items:
+      type: object
+      properties:
+        field:
+          type: string
+        message:
+          type: string
+    description: "Optional validation or constraint details."

@@ -1,7 +1,7 @@
 # get training by ID
 get:
   tags:
-    - 🎓 Training
+    - Training
   summary: Get training by ID
   description: |
     Retrieve a specific training by its ID.
@@ -37,7 +37,7 @@ get:
 # update training
 put:
   tags:
-    - 🎓 Training
+    - Training
   summary: Update a training
   description: Update an existing training
   operationId: updateTraining
@@ -108,7 +108,7 @@ put:
 # delete training
 delete:
   tags:
-    - 🎓 Training
+    - Training
   summary: Delete a training
   description: Delete an existing training
   operationId: deleteTraining

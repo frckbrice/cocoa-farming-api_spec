@@ -1,3 +1,49 @@
+get:
+  tags:
+    - Collector Agent
+  summary: Get a collector agent
+  description: Get a single collector agent by ID
+  operationId: getCollectorAgentById
+  security:
+    - BearerAuth: []
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: ID of the collector agent to retrieve
+      schema:
+        type: string
+        format: cuid
+  responses:
+    "200":
+      description: Collector agent retrieved successfully
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/collector_agent.yaml"
+    "401":
+      $ref: "../../components/responses/UnauthorizedError.yaml"
+    "403":
+      $ref: "../../components/responses/ForbiddenError.yaml"
+    "404":
+      description: Collector agent not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Collector Agent Not Found"
+              message:
+                type: string
+                example: "Collector agent with the specified ID was not found"
+              code:
+                type: string
+                example: "COLLECTOR_AGENT_NOT_FOUND"
+    "500":
+      $ref: "../../components/responses/ServerError.yaml"
+
 patch:
   tags:
     - Collector Agent
@@ -29,52 +75,6 @@ patch:
             $ref: "../../components/schemas/collector_agent.yaml"
     "400":
       $ref: "../../components/responses/ValidationError.yaml"
-    "401":
-      $ref: "../../components/responses/UnauthorizedError.yaml"
-    "403":
-      $ref: "../../components/responses/ForbiddenError.yaml"
-    "404":
-      description: Collector agent not found
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                example: "Collector Agent Not Found"
-              message:
-                type: string
-                example: "Collector agent with the specified ID was not found"
-              code:
-                type: string
-                example: "COLLECTOR_AGENT_NOT_FOUND"
-    "500":
-      $ref: "../../components/responses/ServerError.yaml"
-
-get:
-  tags:
-    - Collector Agent
-  summary: Get a collector agent
-  description: Get a single collector agent by ID
-  operationId: getCollectorAgentById
-  security:
-    - BearerAuth: []
-  parameters:
-    - name: id
-      in: path
-      required: true
-      description: ID of the collector agent to retrieve
-      schema:
-        type: string
-        format: cuid
-  responses:
-    "200":
-      description: Collector agent retrieved successfully
-      content:
-        application/json:
-          schema:
-            $ref: "../../components/schemas/collector_agent.yaml"
     "401":
       $ref: "../../components/responses/UnauthorizedError.yaml"
     "403":

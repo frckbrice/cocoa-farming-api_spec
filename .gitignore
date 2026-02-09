@@ -115,8 +115,7 @@ test-results/
 playwright-report/
 playwright/.cache/
 
-# Docker
-.dockerignore
+# Docker (keep .dockerignore versioned)
 
 # Kubernetes
 *.kubeconfig
@@ -130,3 +129,5 @@ playwright/.cache/
 # Local development
 .local/ 
 .vercel
+project-api_spec/test-docker.sh
+est-docker.sh

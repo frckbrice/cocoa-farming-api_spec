@@ -1,6 +1,6 @@
 get:
   tags:
-    - 👥 Users
+    - Users
   summary: List all collector agents
   description: |
     Retrieve a list of all collector agents.
@@ -69,7 +69,7 @@ get:
 
 post:
   tags:
-    - 👥 Users
+    - Users
   summary: Create a new collector agent
   description: Create a new collector agent in the system
   operationId: createCollectorAgent
@@ -136,7 +136,7 @@ post:
 
 put:
   tags:
-    - 👥 Users
+    - Users
   summary: Update collector agent
   description: Update an existing collector agent
   operationId: updateCollectorAgent

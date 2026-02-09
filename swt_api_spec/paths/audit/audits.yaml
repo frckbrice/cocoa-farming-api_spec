@@ -3,7 +3,7 @@
 
 get:
   tags:
-    - 🌿 Audits
+    - Audits
   summary: List all audits
   description: |
     Retrieve a list of all audits.
@@ -44,6 +44,52 @@ get:
                   has_more:
                     type: boolean
                     example: true
+          examples:
+            project_audit_list:
+              summary: List including project audits
+              value:
+                data:
+                  - id: "clhaudit001"
+                    audit_type: project
+                    project_id: "clh1234567890abcdef"
+                    auditor_id: "clhauditor01"
+                    audit_date: "2024-01-15"
+                    scores:
+                      progress: 75
+                      quality: 85
+                      budget: 90
+                      timeline: 80
+                    notes: "Project progressing well."
+                    risks_identified: ["Weather delays"]
+                    recommendations: ["Increase monitoring"]
+                    created_at: "2024-01-15T10:30:00Z"
+                    updated_at: "2024-01-15T10:30:00Z"
+                meta:
+                  total: 1
+                  page: 1
+                  limit: 20
+                  has_more: false
+            market_audit_list:
+              summary: List including market audits
+              value:
+                data:
+                  - id: "clhaudit002"
+                    audit_type: market
+                    market_id: "clhmarket01"
+                    auditor_id: "clhauditor01"
+                    audit_date: "2024-01-16"
+                    scores:
+                      compliance: 85
+                      safety: 88
+                      efficiency: 82
+                    notes: "Market compliance check completed."
+                    created_at: "2024-01-16T09:00:00Z"
+                    updated_at: "2024-01-16T09:00:00Z"
+                meta:
+                  total: 1
+                  page: 1
+                  limit: 20
+                  has_more: false
     "400":
       $ref: "../../components/responses/ValidationError.yaml"
     "401":
@@ -57,7 +103,7 @@ get:
 
 post:
   tags:
-    - 🌿 Audits
+    - Audits
   summary: Create a new audit
   description: Create a new audit record
   operationId: createAudit
@@ -71,6 +117,7 @@ post:
           $ref: "../../components/schemas/audit.yaml"
         examples:
           project_audit:
+            summary: Project audit (ProjectAudit-style)
             value:
               audit_type: project
               project_id: "clh1234567890abcdef"
@@ -89,6 +136,7 @@ post:
                 location: "Ibadan Division"
                 duration_minutes: 120
           market_audit:
+            summary: Market audit (MarketAudit-style)
             value:
               audit_type: market
               market_id: "clh1234567890abcdef"

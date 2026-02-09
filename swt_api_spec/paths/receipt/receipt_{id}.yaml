@@ -1,43 +1,57 @@
-# get a specific receipt by its id
 get:
   tags:
     - Receipt
-  summary: Get receipt by Id
-  description: Get receipt by Id. and also we can get all the receipts produced during a specific market and by a specific company.
+  summary: Get receipt by ID
+  description: Retrieve a specific receipt by its ID.
   operationId: getReceiptById
   security:
     - BearerAuth: []
   parameters:
-    - in: path
-      name: id
-      description: receipt id
+    - name: id
+      in: path
+      description: Receipt ID
       required: true
       schema:
-        type: array
-        items:
-          type: string
-          example: AQA9CNo0cXNLt6sZp5Uc5P0
-      style: simple
-    - in: query
-      name: market_id
-      description: get receipt corresponding to a specific market.
-      required: true
-      schema:
-        type: array
-        items:
-          type: string
-          example: AQA9CNo0cXNLt6sZp5Uc5P0
-      style: simple
+        type: string
+        format: cuid
+        example: "clh1234567890abcdef"
   responses:
     "200":
-      description: receipt
+      description: Receipt retrieved successfully
       content:
         application/json:
           schema:
             $ref: "../../components/schemas/receipt.yaml"
-    "404":
-      description: receipt not found
+          example:
+            id: "clh1234567890abcdef"
+            market_id: "clh1234567890abcdef"
+            farmer_id: "clh1234567890abcdef"
+            village: "Ibadan Village"
+            date: "2024-01-15T10:30:00Z"
+            net_weight_in_kg: 100
+            quantity_in_bags: 10
+            humidity_level_of_product: 7.5
+            product_name: "Cocoa"
+            receipt_number: "RCP-2024-001"
     "401":
-      description: Unauthorized access
+      $ref: "../../components/responses/UnauthorizedError.yaml"
     "403":
-      description: Forbidden access
+      $ref: "../../components/responses/ForbiddenError.yaml"
+    "404":
+      description: Receipt not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Not Found"
+              message:
+                type: string
+                example: "Receipt with the specified ID was not found"
+              code:
+                type: string
+                example: "RECEIPT_NOT_FOUND"
+    "500":
+      $ref: "../../components/responses/ServerError.yaml"

@@ -1,75 +1,56 @@
+# Market-specific audit record
 type: object
 required:
   - market_id
   - auditor_id
   - audit_date
-  - compliance_score
 properties:
   id:
     type: string
     format: cuid
     readOnly: true
-    description: "The unique ID of the market audit"
-    example: "clh1234567890abcdef"
+    description: "Unique ID of the market audit."
   market_id:
     type: string
     format: cuid
-    description: "The ID of the market being audited"
-    example: "clh1234567890abcdef"
+    description: "Market being audited."
   auditor_id:
     type: string
     format: cuid
-    description: "The ID of the auditor conducting the audit"
-    example: "clh1234567890abcdef"
+    description: "Auditor user ID."
   audit_date:
     type: string
     format: date
-    description: "The date when the audit was conducted"
-    example: "2024-01-15"
+    description: "Date of the audit."
   compliance_score:
     type: integer
     minimum: 0
     maximum: 100
-    description: "Market compliance score (0-100)"
-    example: 85
-  quality_score:
-    type: integer
-    minimum: 0
-    maximum: 100
-    description: "Market quality score (0-100)"
-    example: 90
+    description: "Compliance score (0-100)."
   safety_score:
     type: integer
     minimum: 0
     maximum: 100
-    description: "Market safety standards score (0-100)"
-    example: 88
+    description: "Safety standards score (0-100)."
   efficiency_score:
     type: integer
     minimum: 0
     maximum: 100
-    description: "Market operational efficiency score (0-100)"
-    example: 82
+    description: "Operational efficiency score (0-100)."
   notes:
     type: string
     maxLength: 1000
-    description: "Detailed audit notes and observations"
-    example: "Market meets basic compliance requirements"
+    description: "Audit notes."
   recommendations:
     type: array
-    description: "List of recommendations for improvement"
     items:
       type: string
-    example: ["Improve storage facilities", "Enhance quality control"]
+    description: "List of recommendations."
   created_at:
     type: string
     format: date-time
     readOnly: true
-    description: "Timestamp when the audit was created"
-    example: "2024-01-15T10:30:00Z"
   updated_at:
     type: string
     format: date-time
     readOnly: true
-    description: "Timestamp when the audit was last updated"
-    example: "2024-01-15T10:30:00Z"

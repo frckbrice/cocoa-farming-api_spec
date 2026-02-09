@@ -1,17 +1,27 @@
-# the error object
-type: Object
+# Generic error payload for 4xx/5xx responses
+type: object
 properties:
+  error:
+    type: string
+    description: "Short error type."
+    example: "Not Found"
   message:
     type: string
-    description: "The message of the error"
-    example: "The farm does not exist"
-  statusText:
-    type: string
-    description: "The code of the error"
-    example: "FARM_NOT_FOUND"
+    description: "Human-readable message."
+    example: "The requested resource was not found."
   code:
-    type: number
-    description: "The status of the error"
+    type: string
+    description: "Application error code."
+    example: "NOT_FOUND"
+  statusCode:
+    type: integer
+    description: "HTTP status code."
     example: 404
-    minimun: 100
-    maximum: 599
+  path:
+    type: string
+    description: "Request path that caused the error."
+    example: "/companies/unknown-id"
+  timestamp:
+    type: string
+    format: date-time
+    description: "When the error occurred."

@@ -1,103 +1,7 @@
-post:
-  tags:
-    - 💰 Transactions
-  summary: Create price plan requirement
-  description: |
-    Create a new price plan requirement that represents the requirements corresponding to a particular price plan.
-
-    **Required Permissions:** `write:price_plan_requirement`
-
-    **Business Rules:**
-    - Price plan requirement must be associated with a valid price plan
-    - Requirement must have a valid category and type
-    - Only authorized users can create price plan requirements
-    - Requirements must be unique per price plan
-  operationId: createPricePlanRequirement
-  security:
-    - BearerAuth: []
-  requestBody:
-    required: true
-    content:
-      application/json:
-        schema:
-          $ref: ../components/schemas/price_plan_requirement.yaml
-        examples:
-          basic_requirement:
-            summary: Basic price plan requirement
-            description: Create a price plan requirement with minimal information
-            value:
-              price_plan_id: "clh1234567890abcdef"
-              requirement_name: "Quality Standards"
-              requirement_type: "quality"
-              is_mandatory: true
-          detailed_requirement:
-            summary: Detailed price plan requirement
-            description: Create a price plan requirement with comprehensive details
-            value:
-              price_plan_id: "clh1234567890abcdef"
-              requirement_name: "Quality Standards"
-              requirement_type: "quality"
-              requirement_description: "Must meet minimum quality standards for cocoa beans"
-              is_mandatory: true
-              min_value: 80
-              max_value: 100
-              unit: "percentage"
-              validation_rules:
-                ["Must be organic certified", "No chemical residues"]
-  responses:
-    "201":
-      description: Price plan requirement created successfully
-      headers:
-        Location:
-          description: URL of the created price plan requirement resource
-          schema:
-            type: string
-            format: uri
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/price_plan_requirement.yaml
-          example:
-            id: "clh1234567890abcdef"
-            price_plan_id: "clh1234567890abcdef"
-            requirement_name: "Quality Standards"
-            requirement_type: "quality"
-            requirement_description: "Must meet minimum quality standards for cocoa beans"
-            is_mandatory: true
-            min_value: 80
-            max_value: 100
-            unit: "percentage"
-            created_at: "2024-01-15T10:30:00Z"
-            updated_at: "2024-01-15T10:30:00Z"
-    "400":
-      $ref: "../components/responses/ValidationError.yaml"
-    "401":
-      $ref: "../components/responses/UnauthorizedError.yaml"
-    "403":
-      $ref: "../components/responses/ForbiddenError.yaml"
-    "409":
-      description: Price plan requirement already exists
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                example: "Price Plan Requirement Already Exists"
-              message:
-                type: string
-                example: "A requirement with this name already exists for this price plan"
-              code:
-                type: string
-                example: "PRICE_PLAN_REQUIREMENT_ALREADY_EXISTS"
-    "500":
-      $ref: "../components/responses/ServerError.yaml"
-
 # get all requirement corresponding to a particular offer
 get:
   tags:
-    - 💰 Transactions
+    - Transactions
   summary: List all price plan requirements
   description: |
     Retrieve a paginated list of price plan requirements with optional filtering capabilities.
@@ -229,10 +133,106 @@ get:
     "500":
       $ref: "../components/responses/ServerError.yaml"
 
+post:
+  tags:
+    - Transactions
+  summary: Create price plan requirement
+  description: |
+    Create a new price plan requirement that represents the requirements corresponding to a particular price plan.
+
+    **Required Permissions:** `write:price_plan_requirement`
+
+    **Business Rules:**
+    - Price plan requirement must be associated with a valid price plan
+    - Requirement must have a valid category and type
+    - Only authorized users can create price plan requirements
+    - Requirements must be unique per price plan
+  operationId: createPricePlanRequirement
+  security:
+    - BearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/price_plan_requirement.yaml
+        examples:
+          basic_requirement:
+            summary: Basic price plan requirement
+            description: Create a price plan requirement with minimal information
+            value:
+              price_plan_id: "clh1234567890abcdef"
+              requirement_name: "Quality Standards"
+              requirement_type: "quality"
+              is_mandatory: true
+          detailed_requirement:
+            summary: Detailed price plan requirement
+            description: Create a price plan requirement with comprehensive details
+            value:
+              price_plan_id: "clh1234567890abcdef"
+              requirement_name: "Quality Standards"
+              requirement_type: "quality"
+              requirement_description: "Must meet minimum quality standards for cocoa beans"
+              is_mandatory: true
+              min_value: 80
+              max_value: 100
+              unit: "percentage"
+              validation_rules:
+                ["Must be organic certified", "No chemical residues"]
+  responses:
+    "201":
+      description: Price plan requirement created successfully
+      headers:
+        Location:
+          description: URL of the created price plan requirement resource
+          schema:
+            type: string
+            format: uri
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/price_plan_requirement.yaml
+          example:
+            id: "clh1234567890abcdef"
+            price_plan_id: "clh1234567890abcdef"
+            requirement_name: "Quality Standards"
+            requirement_type: "quality"
+            requirement_description: "Must meet minimum quality standards for cocoa beans"
+            is_mandatory: true
+            min_value: 80
+            max_value: 100
+            unit: "percentage"
+            created_at: "2024-01-15T10:30:00Z"
+            updated_at: "2024-01-15T10:30:00Z"
+    "400":
+      $ref: "../components/responses/ValidationError.yaml"
+    "401":
+      $ref: "../components/responses/UnauthorizedError.yaml"
+    "403":
+      $ref: "../components/responses/ForbiddenError.yaml"
+    "409":
+      description: Price plan requirement already exists
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Price Plan Requirement Already Exists"
+              message:
+                type: string
+                example: "A requirement with this name already exists for this price plan"
+              code:
+                type: string
+                example: "PRICE_PLAN_REQUIREMENT_ALREADY_EXISTS"
+    "500":
+      $ref: "../components/responses/ServerError.yaml"
+
 # update price plan requirement
 put:
   tags:
-    - 💰 Transactions
+    - Transactions
   summary: Update price plan requirement
   description: |
     Update an existing price plan requirement.
@@ -381,7 +381,7 @@ put:
 # delete price plan requirement
 delete:
   tags:
-    - 💰 Transactions
+    - Transactions
   summary: Delete price plan requirement
   description: |
     Delete a price plan requirement from the system.

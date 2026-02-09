@@ -1,47 +1,108 @@
-# retrieve inspection data by id
+# List inspection data by project ID (paginated)
 get:
   tags:
     - Inspection_data
-  summary: Get project inspection data by project_id
-  description: To get a specific inspection data by id. Only administrators can use this operation. If you want to get a specific inspection data by id, use the **getProjectInspectionData** operation.
+  summary: Get inspection data by project ID
+  description: |
+    Retrieve inspection data for a specific project with pagination.
+    Only administrators can use this operation. Use **getInspectionDataById** for a single record by ID.
+  operationId: getProjectInspectionData
+  security:
+    - BearerAuth: []
   parameters:
     - name: project_id
       in: path
-      description: inspection data id
+      description: Project ID to list inspection data for
       required: true
       schema:
         type: string
-        example: "AQA9CNo0cXNLt6sZp5Uc5P0"
+        format: cuid
+        example: "clh1234567890abcdef"
       style: simple
     - name: limit
       in: query
-      description: limit
+      description: Maximum number of items to return
       required: false
       schema:
         type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
         example: 10
       style: simple
     - name: offset
       in: query
-      description: offset
+      description: Number of items to skip
       required: false
       schema:
         type: integer
+        minimum: 0
+        default: 0
         example: 0
       style: simple
-  operationId: getProjectInspectionData
   responses:
     "200":
-      description: inspection data
+      description: List of inspection data for the project
       content:
         application/json:
           schema:
-            $ref: ../../components/schemas/inspection_data.yaml
-    "404":
-      description: inspection data not found
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: "../../components/schemas/inspection_data.yaml"
+              meta:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                    example: 15
+                  page:
+                    type: integer
+                    example: 1
+                  limit:
+                    type: integer
+                    example: 10
+                  has_more:
+                    type: boolean
+                    example: true
+          example:
+            data:
+              - id: "clhinsp001"
+                project_id: "clh1234567890abcdef"
+                collected_by: "clhuser001"
+                collected_at: "2024-01-15T10:30:00Z"
+                project_data_url: "https://storage.example.com/inspection/clhinsp001.json"
+                created_at: "2024-01-15T10:30:00Z"
+                updated_at: "2024-01-15T10:30:00Z"
+              - id: "clhinsp002"
+                project_id: "clh1234567890abcdef"
+                collected_by: "clhuser001"
+                collected_at: "2024-01-16T09:00:00Z"
+                project_data_url: "https://storage.example.com/inspection/clhinsp002.json"
+                created_at: "2024-01-16T09:00:00Z"
+                updated_at: "2024-01-16T09:00:00Z"
+            meta:
+              total: 15
+              page: 1
+              limit: 10
+              has_more: true
     "401":
-      description: Unauthorized access
+      $ref: "../../components/responses/UnauthorizedError.yaml"
     "403":
-      description: Forbidden access
+      $ref: "../../components/responses/ForbiddenError.yaml"
+    "404":
+      description: Project not found
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/error.yaml"
+          example:
+            error: "Not Found"
+            message: "Project with the specified ID was not found."
+            code: "PROJECT_NOT_FOUND"
+            statusCode: 404
+            path: "/inspection_data/by-project/clh1234567890abcdef"
     "500":
-      description: internal server error
+      $ref: "../../components/responses/ServerError.yaml"
